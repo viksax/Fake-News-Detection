@@ -20,7 +20,7 @@ from LSTMfinal_model import lstm_model
 h = HTMLParser()
 from settings import APP_STATIC
 
-# EB looks for an 'application' callable by default.
+# E
 application = Flask(__name__)
 application.debug = True
 
@@ -28,10 +28,10 @@ mod = model(fakeFile=os.path.join(APP_STATIC, 'fake2.txt'), realFile=os.path.joi
 
 def isInDictionary(d,url):
     list_sites = d.keys()
-    #see if the hostname is found in the list provided by open sources
+  
     if url.hostname in list_sites:
         return d[url.hostname]
-    else:#loop through all keys and see if there may be a match with the given URL.
+    else:
         for key in list_sites:
             if key in url.hostname:
                 return d[key]
@@ -73,13 +73,13 @@ def getNewsTitle(url):
         r = requests.get(url)
         if r.status_code == 200 and "Fatal error" not in r.text:
             html = r.text
-            start = html.find('<title>') + 7  # Add length of <title> tag
+            start = html.find('<title>') + 7  
             end = html.find('</title>', start)
             title = html[start:end]
             title = h.unescape(title)
 
             if " - " in title:
-                title = title.rsplit(' - ', 1)[0] # remove last tail if title contains website name
+                title = title.rsplit(' - ', 1)[0] 
 
     except requests.exceptions.ConnectionError:
         logging.error('failed to connect to: '+url)
@@ -129,7 +129,7 @@ def show_analysis():
                     entries.append("Real News")
                 else:
                     entries.append("Fake News")
-                # get content from url
+                
                 article = Article(url)
                 article.download()
                 article.parse()
@@ -152,7 +152,7 @@ def show_analysis():
                 title_result = np.sum(LSTM_Title_Model.predict(title_training)) / 39
                 content_result = np.sum(LSTM_Content_Model.predict(content_training)) / 19
 
-                # append LSTM result of keyword
+              
                 if content_result > 0.5:
                     entries.append("Real News")
                 else:
@@ -185,9 +185,8 @@ def show_contents():
                 entries.append(predict_result)        #machine learning result
         return render_template('index.html', entries=entries)
 
-# run the app.
+
 if __name__ == "__main__":
-    # Setting debug to True enables debug output. This line should be
-    # removed before deploying a production app.
+    
     application.debug = True
     application.run()
