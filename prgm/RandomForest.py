@@ -1,7 +1,7 @@
 """
     The Random Forest - classification version
     """
-__author__ = "Yasharth"
+
 import numpy as np
 import RandomTree as rt
 from scipy import stats

@@ -2,7 +2,7 @@
     function:
     k-fold cross validation
     """
-__author__ = "Yasharth"
+
 
 # sentence length(# of char)
 # sentence length(# of words)

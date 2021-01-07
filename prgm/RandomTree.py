@@ -4,7 +4,7 @@
     Adele Cutler's paper on Random Tree:
     PERT - Perfect Random Tree Ensembles, Adele Cutler, Guohua Zhao
     """
-__author__ = "Yasharth"
+
 import numpy as np
 from scipy import stats
 

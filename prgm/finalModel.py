@@ -2,7 +2,7 @@
     function:
     final model
     """
-__author__ = "Yasharth"
+
 
 import numpy as np
 import math

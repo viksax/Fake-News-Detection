@@ -1,7 +1,7 @@
 """
     generate the k-fold cross-validation data
     """
-__author__ = "Yasharth"
+
 import numpy as np
 from scipy import stats
 import math
